@@ -3,12 +3,12 @@ const biblioteca = {
 
     adicionarLivros(nome, autor, ano, genero) {
         const livro = {
-            nome,
-            autor,
-            ano,
-            genero,
-            disponivel: true,
-            alugado: false,
+            nome:nome,
+            autor:autor,
+            ano:ano,
+            genero:genero,
+            disponivel: "sim",
+            alugado: "não",
             vezesAlugado: 0
         };
 
@@ -18,7 +18,7 @@ const biblioteca = {
     mostrarLivros() {
         for (let i = 0; i < this.livros.length; i++) {
             const L = this.livros[i];
-            console.log(L.nome);
+            console.log(L.nome+"-"+livro.preco);
         }
     }
 };
