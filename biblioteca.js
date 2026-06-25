@@ -1,7 +1,7 @@
 const biblioteca = {
     livros: [],
 
-    adicionarLivros(nome, autor, ano, genero, estoque = 1) {
+    adicionarLivros(nome, autor, ano, genero, estoque = 1 ) {
         const livro = {
             nome:nome,
             autor:autor,
@@ -15,13 +15,7 @@ const biblioteca = {
     },
 
     mostrarLivros() {
-        for (let i = 0; i < this.livros.length; i++) {
-            const l = this.livros[i];
-
-            console.log(
-                `${l.nome} - ${l.autor} - ${l.ano} - ${l.genero} - Estoque: ${l.estoque} - Disponível: ${l.estoque > 0 ? "Sim" : "Não"}`
-            );
-        }
+        console.table(this.livros);
     },
 
     alugar(nome) {
@@ -60,10 +54,51 @@ biblioteca.adicionarLivros(
     "J. K. Rowling",
     2005,
     "Fantasia"
+    
+);
+
+biblioteca.adicionarLivros(
+    "Vingadores: Guerra Civil",
+    "Marvel",
+    2016,
+    "Ação",
+    3
+);
+
+biblioteca.adicionarLivros(
+    "Alice no País das Maravilhas",
+    "Lewis Carroll",
+    1865,
+    "Fantasia",
+    2
+);
+
+biblioteca.adicionarLivros(
+    "Piratas do Caribe",
+    "Disney",
+    2003,
+    "Aventura",
+    2
+);
+
+biblioteca.adicionarLivros(
+    "Game of Thrones",
+    "George R. R. Martin",
+    1996,
+    "Fantasia",
+    4
+);
+
+biblioteca.adicionarLivros(
+    "As Aventuras de Gulliver",
+    "Jonathan Swift",
+    1726,
+    "Aventura",
+    1
 );
 
 biblioteca.mostrarLivros();
 
-biblioteca.alugar("Harry Potter e a Pedra Filosofal");
+biblioteca.alugar();
 
 biblioteca.mostrarLivros();
