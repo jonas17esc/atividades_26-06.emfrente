@@ -1,24 +1,41 @@
 const biblioteca = {
     livros: [],
 
-    adicionarLivros(nome, autor, ano, genero, estoque = 1 ) {
+    adicionarLivros(nome, autor, ano, genero, estoque = 1) {
         const livro = {
-            nome:nome,
-            autor:autor,
-            ano:ano,
-            genero:genero,
+            nome: nome,
+            autor: autor,
+            ano: ano,
+            genero: genero,
             vezesAlugado: 0,
-            estoque:estoque
+            estoque: estoque
         };
 
         this.livros.push(livro);
     },
 
     mostrarLivros() {
+        console.log("=== LISTA DE LIVROS ===");
+
+        for (let i = 0; i < this.livros.length; i++) {
+            const livro = this.livros[i];
+
+            console.log(
+                `${i + 1}. ${livro.nome} - ${livro.autor} (${livro.ano}) | ${livro.genero} | Alugado ${livro.vezesAlugado}x | Estoque: ${livro.estoque}`
+            );
+        }
+    },
+
+    mostrarTabela() {
         console.table(this.livros);
     },
 
     alugar(nome) {
+        if (nome) {
+            console.log("Informe o nome do livro que deseja alugar.");
+            return;
+        }
+
         for (let i = 0; i < this.livros.length; i++) {
             const l = this.livros[i];
 
@@ -31,8 +48,9 @@ const biblioteca = {
                     return;
                 } else {
                     console.log(`O livro "${nome}" está sem estoque, por favor escolha outro livro.`);
-                    return;
                 }
+
+                return;
             }
         }
 
@@ -99,6 +117,6 @@ biblioteca.adicionarLivros(
 
 biblioteca.mostrarLivros();
 
-biblioteca.alugar();
+biblioteca.alugar("Harry Potter e a Pedra Filosofal");
 
-biblioteca.mostrarLivros();
+biblioteca.mostrarTabela();
