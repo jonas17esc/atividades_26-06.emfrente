@@ -79,7 +79,16 @@ const biblioteca = {
         }
 
         console.log(`O livro "${nome}" não existe na biblioteca.`);
-    }
+    },
+    removerLivro(nome){
+        for(let i = 0; i < this.livros.length; i++){
+            if(this.livros[i].nome.toLowerCase() === nome.toLowerCase()){
+                const removido = this.livros[i]
+                this.livros.splice(i,1);
+                console.log("Livro removido", removido.nome);
+                return;
+}} console.log("Livro não encontrado");
+}
 };
 
 // Adicionando livros
@@ -139,8 +148,11 @@ biblioteca.adicionarLivros(
     1
 );
 
-// Mostra a lista de livros
+// Lista os livros
 biblioteca.mostrarLivros();
+
+// Mostra a tabela
+biblioteca.mostrarTabela();
 
 // Aluga um livro
 biblioteca.alugar("Harry Potter e a Pedra Filosofal");
@@ -148,5 +160,6 @@ biblioteca.alugar("Harry Potter e a Pedra Filosofal");
 // Devolve o livro
 biblioteca.devolver("Harry Potter e a Pedra Filosofal");
 
-// Mostra apenas uma tabela no final
-biblioteca.mostrarTabela();
+biblioteca.removerLivro("Piratas do Caribe")
+
+biblioteca.mostrarLivros();
